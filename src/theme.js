@@ -1,4 +1,4 @@
-import { light, dark } from "./colours";
+import { light, dark } from "./colours.js";
 
 function theme(name, palette) {
   return {

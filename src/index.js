@@ -5,7 +5,7 @@ fs.mkdir("./themes", { recursive: true })
   .then(() =>
     Promise.all(
       Object.entries(themes).map(([file, theme]) =>
-        fs.writeFile(`./themes/${file}.json`, JSON.stringify(theme, null, 2))
+        fs.writeFile(`./themes/${file}-color-theme.json`, JSON.stringify(theme, null, 2))
       )
     )
   )

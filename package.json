@@ -1,47 +1,50 @@
 {
-    "name": "godoc-vscode-theme",
-    "displayName": "Godoc Theme",
-    "description": "Minimalistic themes for VS Code based on pkg.go.dev.",
-    "version": "0.1",
-    "publisher": "jasiekmarc",
-    "license": "MIT",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/jasiekmarc/godoc-vscode-theme"
-    },
-    "bugs": {
-      "url": "https://github.com/jasiekmarc/godoc-vscode-theme/issues"
-    },
-    "engines": {
-      "vscode": "^1.43.0"
-    },
-    "categories": [
-      "Themes"
-    ],
-    "keywords": [
-      "theme",
-      "light",
-      "dark"
-    ],
-    "contributes": {
-      "themes": [
-        {
-          "label": "Go Doc Light",
-          "uiTheme": "vs",
-          "path": "./themes/light.json"
-        },
-        {
-          "label": "Go Doc Dark",
-          "uiTheme": "vs-dark",
-          "path": "./themes/dark.json"
-        }
-      ]
-    },
-    "devDependencies": {
-      "vsce": "^1.100.1"
-    },
-    "scripts": {
-      "build": "node src/index.js && mkdir -p build"
-    }
-    
+  "name": "godoc-vscode-theme",
+  "displayName": "Godoc Theme",
+  "description": "Minimalistic themes for VS Code based on pkg.go.dev.",
+  "version": "0.0.1",
+  "publisher": "jasiekmarc",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasiekmarc/godoc-vscode-theme"
+  },
+  "bugs": {
+    "url": "https://github.com/jasiekmarc/godoc-vscode-theme/issues"
+  },
+  "engines": {
+    "vscode": "^1.43.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "light",
+    "dark"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Go Doc Light",
+        "uiTheme": "vs",
+        "path": "./themes/light-color-theme.json"
+      },
+      {
+        "label": "Go Doc Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/dark-color-theme.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "vsce": "^2.15.0"
+  },
+  "scripts": {
+    "start": "nodemon --watch src src/index.js",
+    "build": "node src/index.js && mkdir -p build",
+    "package": "vsce package -o ./build/github-vscode-theme.vsix"
   }
+}
