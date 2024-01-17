@@ -1,0 +1,35 @@
+name: 'Release'
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  release:
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout main into release folder
+        run: |
+          git fetch origin main
+          git worktree add release main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build the project
+        run: npm run build
+      - name: Stage new changes in the main branch.
+        working-directory: ./release
+        run: git add -A
+      - name: Bump the version
+        working-directory: ./release
+        run: |
+          npm version ${GITHUB_REF_NAME} -no-git-tag-version
+          git add package.json
+          git commit -m "Automatic release: ${GITHUB_REF_NAME}"
+      - run: git push origin main
+      - name: Publish to VS Code Extensions Marketplace
+        working-directory: ./release
+        run: npx vsce publish
+        env:
+          VSCE_PAT: ${{ secrets.VSCEPAT }}

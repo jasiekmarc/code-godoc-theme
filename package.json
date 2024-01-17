@@ -2,21 +2,10 @@
   "name": "godoc-vscode-theme",
   "displayName": "Godoc Theme",
   "description": "Minimalistic themes for VS Code based on pkg.go.dev.",
-  "version": "0.0.1",
-  "publisher": "jasiekmarc",
-  "license": "MIT",
   "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jasiekmarc/godoc-vscode-theme"
-  },
-  "bugs": {
-    "url": "https://github.com/jasiekmarc/godoc-vscode-theme/issues"
-  },
   "engines": {
     "vscode": "^1.43.0"
   },
-  "icon": "icon.png",
   "categories": [
     "Themes"
   ],
@@ -45,7 +34,9 @@
   },
   "scripts": {
     "start": "nodemon --watch src src/index.js",
-    "build": "node src/index.js && mkdir -p build",
-    "package": "vsce package -o ./build/github-vscode-theme.vsix"
+    "prebuild": "mkdir -p release && find release -mindepth 1 -not -name .git -print -delete",
+    "build": "node src/index.js",
+    "postbuild": "cp -r {package/.,themes} release/",
+    "clean": "rm -r release/ themes/"
   }
 }
