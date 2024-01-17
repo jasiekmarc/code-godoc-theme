@@ -1,5 +1,7 @@
 import { light, dark } from "./colours.js";
 
+let opaque = "#00000000";
+
 function theme(name, palette) {
   return {
     name: name,
@@ -9,6 +11,8 @@ function theme(name, palette) {
 
       "editor.background": palette.backgroundAccented,
       "editor.foreground": palette.text,
+      "editor.lineHighlightBackground": palette.backgroundInfo,
+      "editor.lineHighlightBorder": opaque,
       "editorLineNumber.foreground": palette.brandPrimary,
       "editorGutter.background": palette.backgroundAccented,
     },
