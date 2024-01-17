@@ -1,0 +1,40 @@
+{
+    "name": "godoc-vscode-theme",
+    "displayName": "Godoc Theme",
+    "description": "Minimalistic themes for VS Code based on pkg.go.dev.",
+    "publisher": "jasiekmarc",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jasiekmarc/godoc-vscode-theme"
+    },
+    "bugs": {
+      "url": "https://github.com/jasiekmarc/godoc-vscode-theme/issues"
+    },
+    "engines": {
+      "vscode": "^1.43.0"
+    },
+    "icon": "icon.png",
+    "categories": [
+      "Themes"
+    ],
+    "keywords": [
+      "theme",
+      "light",
+      "dark"
+    ],
+    "contributes": {
+      "themes": [
+        {
+          "label": "Go Doc Light",
+          "uiTheme": "vs",
+          "path": "./themes/light-color-theme.json"
+        },
+        {
+          "label": "Go Doc Dark",
+          "uiTheme": "vs-dark",
+          "path": "./themes/dark-color-theme.json"
+        }
+      ]
+    }
+}
